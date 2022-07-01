@@ -1,0 +1,44 @@
+# by list 
+from sklearn.datasets import load_breast_cancer
+cancer = load_breast_cancer()
+RangeIndex = range(0, 569)
+df = pd.DataFrame(cancer.data, columns=cancer.feature_names, index=RangeIndex)
+df['target'] = cancer.target
+
+# by dict
+import pandas as pd 
+data = {'Fruit':['Apple', 'Grape', 'Banana'], 'Price':[6, 30, 5]} 
+df = pd.DataFrame(data) 
+df 
+
+# by list of dict
+import pandas as pd 
+data = [{'Fruit': 'Apple', 'Price': 6}, {'Fruit': 'Grape', 'Price': 30}, {'Fruit': 'Banana', 'Price': 5}] 
+df = pd.DataFrame(data) 
+df 
+
+# by zip
+import pandas as pd  
+Fruit = ['Apple', 'Grape', 'Banana']  
+Price = [6, 30, 5]  
+list_of_tuples = list(zip(Fruit, Price))  
+df = pd.DataFrame(list_of_tuples, columns = ['Name', 'Age'])  
+df 
+
+# row by row
+import pandas as pd  
+df = pd.DataFrame(columns = ['Fruit', 'Price'])
+df = df.append({'Fruit': 'Apple', 'Price': 6}, ignore_index=True)
+df = df.append({'Fruit': 'Grape', 'Price': 30}, ignore_index=True)
+df = df.append({'Fruit': 'Banana', 'Price': 5}, ignore_index=True)
+df
+
+# or by at, 根据指定行index及列label，快速定位DataFrame的元素；
+df = pd.DataFrame(columns=['a', 'b'])
+df.at[i, 'a'] = your_data
+df= df.append(your_data, ignore_index=True)
+
+# loc，基于列label，可选取特定行（根据行index）；
+# iloc，基于行/列的position；
+# iat，与at类似，不同的是根据position来定位的；
+# ix，为loc与iloc的混合体，既支持label也支持position；
